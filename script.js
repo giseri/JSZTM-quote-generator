@@ -8,7 +8,7 @@ const loader = document.getElementById('loader');
 // initialize empty array for JSON object later
 let apiQuotes = [];                                 
 
-// Show Loading
+// Show Loading - Loader from w3schools  https://www.w3schools.com/howto/howto_css_loader.asp
 function loading(){
     loader.hidden = false;
     quoteContainer.hidden = true;
