@@ -8,21 +8,20 @@ const loader = document.getElementById('loader');
 // initialize empty array for JSON object later
 let apiQuotes = [];                                 
 
-// Show Loading - Loader from w3schools  https://www.w3schools.com/howto/howto_css_loader.asp
-function loading(){
+// Loading Spinner from w3schools  https://www.w3schools.com/howto/howto_css_loader.asp
+function showLoadingSpinner(){
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-// Hide Loading
-function complete(){
+function removeLoadingSpinner(){
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
 
 // Show New Quote
 function newQuote(){
-    loading();
+    showLoadingSpinner();
     // PIck a random quote from apiQuotes array using array length and random function
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
     console.log("Quotes array length:   " + apiQuotes.length);
@@ -46,14 +45,13 @@ function newQuote(){
         authorText.innerText = quote.author;
     }
     
-    // Hide Loader
-    complete();
+    removeLoadingSpinner();
 }
 
 
 // Get Quotes From API via asynchronous fetch request via try catch
 async function getQuotes(){
-    loading();
+    showLoadingSpinner();
     const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
         const response = await fetch(apiUrl);       // receive series of strings from server
@@ -68,7 +66,7 @@ async function getQuotes(){
 
 // Tweet Quote
 function tweetQuote(){
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.innerText} - ${authorText.innerText}`;
     window.open(twitterUrl, '_blank');
 }
 
