@@ -37,13 +37,13 @@ function newQuote(){
         quoteText.classList.remove('long-quote');
     }
 
-    quoteText.textContent = quote.text;
+    quoteText.innerText = quote.text;
 
     // Check if Author field is blank and replace it with 'Unknown'
     if(!quote.author){
-        authorText.textContent = 'Unknown';
+        authorText.innerText = 'Unknown';
     } else {
-        authorText.textContent = quote.author;
+        authorText.innerText = quote.author;
     }
     
     // Hide Loader
